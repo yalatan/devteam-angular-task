@@ -1,0 +1,20 @@
+<main class="main" [@simpleFadeAnimation]="'in'">
+    <div class="main__button-wrapper">
+        <span class="spacer"></span>
+        <button mat-raised-button color="primary" class="button" (click)="openDialog()">Добавить пост</button>        
+    </div>
+    <div class="wrapper" *ngIf="isshowSpinner">
+        <mat-spinner class="primary"></mat-spinner>
+    </div>
+    <div class="post-wrapper" *ngFor=" let item of listPosts; let i = index" >
+        <span class="post-wrapper__order">{{i+1}}.</span>
+<span class="post-wrapper__title" (click)="redirectToPostPage(item)">{{item.title}}</span>
+    </div>
+    <div class="post-wrapper"  *ngIf="isshowNewPost">
+        <span class="post-wrapper__order">{{newpost.id}}.</span>
+<span class="post-wrapper__title" (click)="redirectToPostPage(newpost)">{{newpost.title}}</span>
+    </div>
+
+
+</main>
+

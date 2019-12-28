@@ -1,0 +1,18 @@
+<main class="main" [@simpleFadeAnimation]="'in'">
+    <div class="main__button-wrapper">
+        <span class="spacer"></span>
+        <button mat-raised-button color="primary" routerLink="/main-page" routerLinkActive="active-link">Назад</button>
+    </div>
+    <div class="wrapper" *ngIf="isshowSpinner">
+        <mat-spinner class="primary"></mat-spinner>
+    </div>
+    <div class="post-wrapper" >
+        <p class="post-wrapper__info">
+            <span class="post-wrapper__userId">{{post.userId}}</span>
+            <span class="spacer"></span>
+            <span class="post-wrapper__id">{{post.id}}</span>
+        </p>
+<p class="post-wrapper__title">{{post.title}}</p>
+<p class="post-wrapper__text">{{post.body}}</p>
+    </div>
+</main>
