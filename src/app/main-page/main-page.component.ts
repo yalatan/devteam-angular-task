@@ -27,7 +27,7 @@ import { PopapComponent } from '../popap/popap.component';
   ]
 })
 export class MainPageComponent implements OnInit {
-listPosts: [];
+listPosts: any;
 isshowSpinner: boolean = true;
 newpost: any;
 title: string;
@@ -43,12 +43,11 @@ isshowNewPost = false;
 
   ngOnInit() {
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(json => {
-     this.listPosts = json; this.isshowSpinner=false;});
-  
+    this.postservice.getListPosts().then(response => response.json())
+    .then(json => {
+       this.listPosts = json; this.isshowSpinner=false;});
 
+     if(this.listPosts){this.isshowSpinner=false;}
 this.postservice._newpost.subscribe(mes => {
   this.newpost  = mes;
  this.isshowNewPost = true;

@@ -9,13 +9,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-
-import { PostPageComponent } from './post-page/post-page.component';
-
-
-import { MaterialModule } from './material/material.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+
+import { PostPageComponent } from './post-page/post-page.component';
 import { PopapComponent } from './popap/popap.component';
 
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
@@ -38,7 +35,6 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     MatInputModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MaterialModule,
     FormsModule, 
     ReactiveFormsModule
   ],

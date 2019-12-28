@@ -36,21 +36,6 @@ export class PopapComponent implements OnInit {
     this.dialogRef.close();
   }
   save(value){
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-    method: 'POST',
-    body: JSON.stringify({
-      title: value.title,
-      body: value.body,
-      userId: value.userId
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })
-  .then(response => response.json())
-  .then(json => {
-    console.log("save in server",json);
-this.postservice._newpost.next(json);
-})
+    this.postservice.sendPost(value);
   }
 }
