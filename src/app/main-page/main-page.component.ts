@@ -11,6 +11,7 @@ import {
 
 import { MatDialog } from "@angular/material";
 import { PopupComponent } from "../popup/popup.component";
+import { DialogData } from "../popup/DialogData";
 
 @Component({
   selector: "app-main-page",
@@ -27,7 +28,7 @@ import { PopupComponent } from "../popup/popup.component";
 export class MainPageComponent implements OnInit {
   posts: any;
   isShowSpinner = true;
-  newPost: any;
+  newPost: DialogData;
   title: string;
   body: string;
   userId: string;
@@ -45,8 +46,9 @@ export class MainPageComponent implements OnInit {
     });
 
     this.postService._newPost.subscribe(data => {
-      this.newPost = data;
+      this.posts.push(data);
       this.isNewPost = true;
+      
       setTimeout(
         () =>
           window.scrollTo({
