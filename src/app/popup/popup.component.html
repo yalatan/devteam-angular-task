@@ -1,33 +1,33 @@
-<form [formGroup]="popapForm" class="form" >
+<form [formGroup]="popUpForm" class="form" >
     <div mat-dialog-content class="input-wrapper">
 
         <mat-form-field>
           <input type="text" matInput  placeholder="Заголовок" formControlName="title">         
         </mat-form-field>
-        <p *ngIf="popapForm.controls['title'].invalid && popapForm.controls['title'].touched" class="error">
+        <p *ngIf="popUpForm.controls['title'].invalid && popUpForm.controls['title'].touched" class="error">
            Пожалуйста, введите заголовок</p>
-           <p class="error" *ngIf="popapForm.controls['title'].hasError('maxlength')">
+           <p class="error" *ngIf="popUpForm.controls['title'].hasError('maxlength')">
             Длина заголовка не может превышать 40 символов
         </p>
         <mat-form-field>
           <input type="text" matInput  placeholder="Текст" formControlName="body">
         </mat-form-field>
-        <p *ngIf="popapForm.controls['body'].hasError('required') && popapForm.controls['body'].touched" class="error">
+        <p *ngIf="popUpForm.controls['body'].hasError('required') && popUpForm.controls['body'].touched" class="error">
           Пожалуйста, введите текст</p>
-            <p class="error" *ngIf="popapForm.controls['body'].hasError('maxlength')">
+            <p class="error" *ngIf="popUpForm.controls['body'].hasError('maxlength')">
               Длина текста не может превышать 50 символов
           </p>
         <mat-form-field>
           <input type="text" matInput  placeholder="UserId" formControlName="userId">
         </mat-form-field>
-        <p *ngIf="popapForm.controls['userId'].hasError('required') && popapForm.controls['userId'].touched" class="error">
+        <p *ngIf="popUpForm.controls['userId'].hasError('required') && popUpForm.controls['userId'].touched" class="error">
            Пожалуйста, введите id пользователя</p>
-           <p class="error" *ngIf="popapForm.controls['userId'].hasError('pattern')">
+           <p class="error" *ngIf="popUpForm.controls['userId'].hasError('pattern')">
             Id пользователя может быть только число
         </p>
       </div>
       <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">Нет, спасибо</button>
-        <button mat-button [mat-dialog-close]="data"  (click)="save(popapForm.value)" [disabled]="popapForm.invalid">Сохранить</button>
+        <button mat-button (click)="onClose()">Нет, спасибо</button>
+        <button mat-button [mat-dialog-close]="data"  (click)="onSave(popUpForm.value)" [disabled]="popUpForm.invalid">Сохранить</button>
       </div>  
 </form>

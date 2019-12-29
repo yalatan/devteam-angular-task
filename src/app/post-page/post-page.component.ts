@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../post.service';
+import { Component, OnInit } from "@angular/core";
+import { PostService } from "../post.service";
 import {
   trigger,
   style,
@@ -9,9 +9,9 @@ import {
 } from "@angular/animations";
 
 @Component({
-  selector: 'app-post-page',
-  templateUrl: './post-page.component.html',
-  styleUrls: ['./post-page.component.scss'],
+  selector: "app-post-page",
+  templateUrl: "./post-page.component.html",
+  styleUrls: ["./post-page.component.scss"],
   animations: [
     trigger("simpleFadeAnimation", [
       state("in", style({ opacity: 1 })),
@@ -21,15 +21,14 @@ import {
   ]
 })
 export class PostPageComponent implements OnInit {
-post: any;
-isshowSpinner: boolean = true;
-  constructor(
-    private postservice: PostService,
-  ) { }
+  post: {};
+  isShowSpinner = true;
+  constructor(private postservice: PostService) {}
 
   ngOnInit() {
     this.post = this.postservice.getPost();
-    if(this.post){this.isshowSpinner=false;}    
+    if (this.post) {
+      this.isShowSpinner = false;
+    }
   }
-
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject } from "@angular/core";
 import { Router } from "@angular/router";
-import {PostService} from "../post.service";
+import { PostService } from "../post.service";
 import {
   trigger,
   style,
@@ -9,15 +9,13 @@ import {
   state
 } from "@angular/animations";
 
-
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { DialogData } from '../popap/DialogData';
-import { PopapComponent } from '../popap/popap.component';
+import { MatDialog } from "@angular/material";
+import { PopupComponent } from "../popup/popup.component";
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss'],
+  selector: "app-main-page",
+  templateUrl: "./main-page.component.html",
+  styleUrls: ["./main-page.component.scss"],
   animations: [
     trigger("simpleFadeAnimation", [
       state("in", style({ opacity: 1 })),
@@ -27,44 +25,47 @@ import { PopapComponent } from '../popap/popap.component';
   ]
 })
 export class MainPageComponent implements OnInit {
-listPosts: any;
-isshowSpinner: boolean = true;
-newpost: any;
-title: string;
-body: string;
-userId: string;
-dataPopap: any;
-isshowNewPost = false;
+  posts: [];
+  isShowSpinner = true;
+  newPost: {};
+  title: string;
+  body: string;
+  userId: string;
+  isNewPost = false;
   constructor(
     private router: Router,
-    private postservice: PostService,
+    private postService: PostService,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
+    this.postService.getPosts().then(json => {
+      this.posts = json;
+      this.isShowSpinner = false;
+    });
 
-    this.postservice.getListPosts().then(response => response.json())
-    .then(json => {
-       this.listPosts = json; this.isshowSpinner=false;});
-
-     if(this.listPosts){this.isshowSpinner=false;}
-this.postservice._newpost.subscribe(mes => {
-  this.newpost  = mes;
- this.isshowNewPost = true;
- });
+    this.postService._newPost.subscribe(data => {
+      this.newPost = data;
+      this.isNewPost = true;
+      setTimeout(
+        () =>
+          window.scrollTo({
+            top: document.body.scrollHeight + 50,
+            behavior: "smooth"
+          }),
+        300
+      );
+    });
   }
-  redirectToPostPage(post){
-this.postservice.setPost(post);
-this.router.navigate(["/post-page"]);
+  redirectToPostPage(post): void {
+    this.postService.setPost(post);
+    this.router.navigate(["/post-page"]);
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PopapComponent, {
-      width: '500px',
-      data: {title: this.title, body: this.body, userId: this.userId}
+    this.dialog.open(PopupComponent, {
+      width: "500px",
+      data: { title: this.title, body: this.body, userId: this.userId }
     });
-
   }
 }
-
-

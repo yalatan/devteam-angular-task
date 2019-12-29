@@ -1,9 +1,9 @@
 <main class="main" [@simpleFadeAnimation]="'in'">
     <div class="main__button-wrapper">
         <span class="spacer"></span>
-        <button mat-raised-button color="primary" routerLink="/main-page" routerLinkActive="active-link">Назад</button>
+        <button mat-raised-button color="primary" routerLink="/" routerLinkActive="active-link">Назад</button>
     </div>
-    <div class="wrapper" *ngIf="isshowSpinner">
+    <div class="wrapper" *ngIf="isShowSpinner">
         <mat-spinner class="primary"></mat-spinner>
     </div>
     <div class="post-wrapper" >

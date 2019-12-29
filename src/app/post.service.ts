@@ -5,15 +5,15 @@ import { Subject } from "rxjs";
   providedIn: "root"
 })
 export class PostService {
-  post: any;
-  newpost: any;
-  listPosts: any;
-  isPost: Boolean = false;
-  public _newpost = new Subject<any>();
+  post: {};
+  newPost: {};
+  isPost = false;
+  public _newPost = new Subject<any>();
   constructor() {}
 
-  getListPosts() {
-    return fetch("https://jsonplaceholder.typicode.com/posts");
+  getPosts() {
+    return fetch("https://jsonplaceholder.typicode.com/posts")
+    .then(response => response.json());
   }
 
   sendPost(value) {
@@ -30,24 +30,24 @@ export class PostService {
     })
       .then(response => response.json())
       .then(json => {
-        this._newpost.next(json);
+        this._newPost.next(json);
         console.log("save in server", json);
       });
   }
-  setPost(item) {
+  setPost(item): void {
     this.post = item;
     this.isPost = true;
   }
-  getPost() {
+  getPost(): {} {
     return this.post;
   }
-  canRedirect() {
+  canRedirect(): {} {
     return this.isPost;
   }
-  setNewPost(item) {
-    this.newpost = item;
+  setNewPost(item): void {
+    this.newPost = item;
   }
-  getNewPost() {
-    return this.newpost;
+  getNewPost(): {} {
+    return this.newPost;
   }
 }

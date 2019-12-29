@@ -13,7 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
 import { PostPageComponent } from './post-page/post-page.component';
-import { PopapComponent } from './popap/popap.component';
+import { PopupComponent } from './popup/popup.component';
 
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
@@ -23,7 +23,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
     AppComponent,
     MainPageComponent,
     PostPageComponent,
-    PopapComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +40,6 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [PopapComponent]
+  entryComponents: [PopupComponent]
 })
 export class AppModule { }
