@@ -8,16 +8,17 @@ export class PostService {
   post: {};
   newPost: {};
   isPost = false;
+  urlPosts = "https://jsonplaceholder.typicode.com/posts";
   public _newPost = new Subject<any>();
   constructor() {}
 
   getPosts() {
-    return fetch("https://jsonplaceholder.typicode.com/posts")
+    return fetch(this.urlPosts)
     .then(response => response.json());
   }
 
   sendPost(value) {
-    return fetch("https://jsonplaceholder.typicode.com/posts", {
+    return fetch(this.urlPosts, {
       method: "POST",
       body: JSON.stringify({
         title: value.title,
