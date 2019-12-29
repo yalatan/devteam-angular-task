@@ -5,6 +5,7 @@ import { Subject } from "rxjs";
   providedIn: "root"
 })
 export class PostService {
+  id: string;
   post: {};
   newPost: {};
   isPost = false;
@@ -13,8 +14,7 @@ export class PostService {
   constructor() {}
 
   getPosts() {
-    return fetch(this.urlPosts)
-    .then(response => response.json());
+    return fetch(this.urlPosts).then(response => response.json());
   }
 
   sendPost(value) {
@@ -38,13 +38,9 @@ export class PostService {
   setPost(item): void {
     this.post = item;
     this.isPost = true;
-    localStorage.setItem('post', JSON.stringify(this.post));
   }
   getPost(): {} {
-    if(this.post){ return this.post;}
-   else{ 
-     return JSON.parse(localStorage.getItem('post'))
-   }
+    return this.post;
   }
   canRedirect(): {} {
     return this.isPost;

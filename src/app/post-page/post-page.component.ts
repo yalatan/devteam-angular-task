@@ -7,6 +7,8 @@ import {
   transition,
   state
 } from "@angular/animations";
+import { ActivatedRoute } from "@angular/router";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-post-page",
@@ -23,12 +25,30 @@ import {
 export class PostPageComponent implements OnInit {
   post: any;
   isShowSpinner = true;
-  constructor(private postservice: PostService) {}
+  urlPosts = "https://jsonplaceholder.typicode.com/posts";
+  private id: number;
+  constructor(
+    private postservice: PostService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.route.paramMap
+      .pipe(switchMap(params => params.get("id")))
+      .subscribe(data => (this.id = +data));
+
     this.post = this.postservice.getPost();
     if (this.post) {
       this.isShowSpinner = false;
+    } else {
+      fetch(this.urlPosts + "/" + this.id)
+        .then(response => response.json())
+        .then(json => {
+          this.post = json;
+          if (this.post) {
+            this.isShowSpinner = false;
+          }
+        });
     }
   }
 }

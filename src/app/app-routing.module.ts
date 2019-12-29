@@ -7,7 +7,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 const routes: Routes = [
   { path: "", redirectTo: "main-page", pathMatch: "full" },
   { path: "main-page", component: MainPageComponent },
-  { path: "post-page", component: PostPageComponent },
+  { path: "post/:id", component: PostPageComponent },
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@
     <div class="wrapper" *ngIf="isShowSpinner">
         <mat-spinner class="primary"></mat-spinner>
     </div>
-    <div class="post-wrapper" *ngFor=" let post of posts; let i = index" (click)="redirectToPostPage(post)">
+    <div class="post-wrapper" *ngFor=" let post of posts; let i = index" (click)="redirectToPostPage(post)" >
         <span class="post-wrapper__order">{{i+1}}.</span>
         <span class="post-wrapper__title" >{{post.title}}</span>
     </div>

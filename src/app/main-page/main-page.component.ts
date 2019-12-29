@@ -48,7 +48,7 @@ export class MainPageComponent implements OnInit {
     this.postService._newPost.subscribe(data => {
       this.posts.push(data);
       this.isNewPost = true;
-      
+
       setTimeout(
         () =>
           window.scrollTo({
@@ -61,7 +61,7 @@ export class MainPageComponent implements OnInit {
   }
   redirectToPostPage(post): void {
     this.postService.setPost(post);
-    this.router.navigate(["/post-page"]);
+    this.router.navigate(["/post", post.id]);
   }
 
   openDialog(): void {

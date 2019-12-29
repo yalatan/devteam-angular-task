@@ -6,7 +6,7 @@
     <div class="wrapper" *ngIf="isShowSpinner">
         <mat-spinner class="primary"></mat-spinner>
     </div>
-    <div class="post-wrapper" >
+    <div class="post-wrapper" *ngIf="!isShowSpinner" >
         <p class="post-wrapper__info">
             <span class="post-wrapper__userId">{{post.userId}}</span>
             <span class="spacer"></span>
