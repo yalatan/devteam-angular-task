@@ -21,7 +21,7 @@ import {
   ]
 })
 export class PostPageComponent implements OnInit {
-  post: {};
+  post: any;
   isShowSpinner = true;
   constructor(private postservice: PostService) {}
 

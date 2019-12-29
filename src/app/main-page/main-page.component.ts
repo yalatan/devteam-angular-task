@@ -25,9 +25,9 @@ import { PopupComponent } from "../popup/popup.component";
   ]
 })
 export class MainPageComponent implements OnInit {
-  posts: [];
+  posts: any;
   isShowSpinner = true;
-  newPost: {};
+  newPost: any;
   title: string;
   body: string;
   userId: string;
