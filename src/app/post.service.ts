@@ -38,9 +38,13 @@ export class PostService {
   setPost(item): void {
     this.post = item;
     this.isPost = true;
+    localStorage.setItem('post', JSON.stringify(this.post));
   }
   getPost(): {} {
-    return this.post;
+    if(this.post){ return this.post;}
+   else{ 
+     return JSON.parse(localStorage.getItem('post'))
+   }
   }
   canRedirect(): {} {
     return this.isPost;
